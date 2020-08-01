@@ -1,11 +1,5 @@
 'use strict'
 
-function test() {
-  console.log("Hello!");
-}
-
-test();
-
 let herd = [];
 
 function Unicorn(name, color, food, location) {
@@ -80,11 +74,10 @@ let list = document.getElementsByTagName('ul')[0];
 
 function updateLocation(event) {
   event.preventDefault();
-  let el = document.getElementById(event.target.id)
   let index = parseInt(event.target.className);
   herd[index].location = event.target.value;
- 
-  console.log(event);
+  list.textContent = "";
+  displayHerd(herd);
 }
 
 list.addEventListener('change', updateLocation)
