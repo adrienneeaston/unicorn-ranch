@@ -75,7 +75,7 @@ function displayHerd(arr) {
   for(let i = 0; i < arr.length; i++) {
     displayUnicorn(arr[i], i);
   }
-  localStorage.setItem('storedHerd', JSON.stringify(herd));
+  localStorage.setItem('key', JSON.stringify(herd));
 }
 
 function handleUpdateLocation(event) {
@@ -87,21 +87,21 @@ function handleUpdateLocation(event) {
 }
 
 function checkLocalStorage() {
-  if(localStorage.getItem('storedHerd') === null) {
-    new Unicorn("Rainbow", "multicolored", "icecream", "pasture");
+  if(localStorage.getItem('key') === null) {
+    new Unicorn("Rainbow", "multi", "icecream", "pasture");
     new Unicorn("Sparkle", "white", "steak", "trail");
     new Unicorn("Lightning", "gray", "catfood", "barn");
-    new Unicorn("Bob", "multicolored", "icecream", "pasture");
+    new Unicorn("Bob", "multi", "icecream", "pasture");
     new Unicorn("Starlight", "white", "steak", "trail");
-    new Unicorn("Narwal", "gray", "catfood", "barn");
+    new Unicorn("Narwhal", "gray", "catfood", "barn");
     new Unicorn("Ezio", "black", "icecream", "pasture");
     new Unicorn("Kassandra", "white", "steak", "trail");
     new Unicorn("Sarah", "brown", "catfood", "barn");
-    new Unicorn("Fido", "multicolored", "icecream", "pasture");
+    new Unicorn("Fido", "green", "icecream", "pasture");
     new Unicorn("Spike", "pink", "steak", "trail");
     new Unicorn("Ruby", "red", "catfood", "barn");
   } else {
-    herd = JSON.parse(localStorage.getItem('storedHerd'));
+    herd = JSON.parse(localStorage.getItem('key'));
   }
 }
 
