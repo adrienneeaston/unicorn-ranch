@@ -1,6 +1,7 @@
 'use strict'
 
 let herd = [];
+let list = document.getElementsByTagName('ul')[0];
 
 function Unicorn(name, color, food, location) {
   this.name = name,
@@ -35,7 +36,6 @@ function displayUnicorn(obj, index) {
   labelBarn.setAttribute('for', 'barn');
   newEl.appendChild(inputBarn);
   newEl.appendChild(labelBarn);
-  console.log(obj.name + 'barn');
 
   let inputPasture = document.createElement('input');
   let labelPasture = document.createElement('label');
@@ -68,11 +68,10 @@ function displayHerd(arr) {
   for(let i = 0; i < arr.length; i++) {
     displayUnicorn(arr[i], i);
   }
+  localStorage.setItem('storedHerd', JSON.stringify(herd));
 }
 
-let list = document.getElementsByTagName('ul')[0];
-
-function updateLocation(event) {
+function handleUpdateLocation(event) {
   event.preventDefault();
   let index = parseInt(event.target.className);
   herd[index].location = event.target.value;
@@ -80,23 +79,30 @@ function updateLocation(event) {
   displayHerd(herd);
 }
 
-list.addEventListener('change', updateLocation)
+function checkLocalStorage() {
+  if(localStorage.getItem('storedHerd') === null) {
+    new Unicorn("Rainbow", "multicolored", "icecream", "pasture");
+    new Unicorn("Sparkle", "white", "steak", "trail");
+    // new Unicorn("Lightning", "gray", "catfood", "barn");
+    // new Unicorn("Bob", "multicolored", "icecream", "pasture");
+    // new Unicorn("Starlight", "white", "steak", "trail");
+    // new Unicorn("Narwal", "gray", "catfood", "barn");
+    // new Unicorn("Ezio", "black", "icecream", "pasture");
+    // new Unicorn("Kassandra", "white", "steak", "trail");
+    // new Unicorn("Sarah", "brown", "catfood", "barn");
+    // new Unicorn("Fido", "multicolored", "icecream", "pasture");
+    // new Unicorn("Spike", "pink", "steak", "trail");
+    // new Unicorn("Ruby", "red", "catfood", "barn");
+  } else {
+    herd = JSON.parse(localStorage.getItem('storedHerd'));
+  }
+}
 
-new Unicorn("Rainbow", "multicolored", "icecream", "pasture");
-new Unicorn("Sparkle", "white", "steak", "trail");
-new Unicorn("Lightning", "gray", "catfood", "barn");
-new Unicorn("Bob", "multicolored", "icecream", "pasture");
-new Unicorn("Starlight", "white", "steak", "trail");
-new Unicorn("Narwal", "gray", "catfood", "barn");
-new Unicorn("Ezio", "black", "icecream", "pasture");
-new Unicorn("Kassandra", "white", "steak", "trail");
-new Unicorn("Sarah", "brown", "catfood", "barn");
-new Unicorn("Fido", "multicolored", "icecream", "pasture");
-new Unicorn("Spike", "pink", "steak", "trail");
-new Unicorn("Ruby", "red", "catfood", "barn");
-console.log(herd);
+list.addEventListener('change', handleUpdateLocation)
 
+checkLocalStorage();
 displayHerd(herd);
+
 
 
 
