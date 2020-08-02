@@ -29,11 +29,10 @@ function displayUnicorn(obj, index) {
   let labelBarn = document.createElement('label');
   labelBarn.textContent = 'Barn';
   inputBarn.setAttribute('type', 'radio');
-  inputBarn.setAttribute('name', 'location');
+  inputBarn.setAttribute('name', index + 'location');
   inputBarn.setAttribute('id', index + 'barn');
   inputBarn.setAttribute('class', index.toString());
   inputBarn.setAttribute('value', 'barn');
-  // inputBarn.setAttribute('checked', 'false');
   labelBarn.setAttribute('for', 'barn');
   newEl.appendChild(inputBarn);
   newEl.appendChild(labelBarn);
@@ -42,7 +41,7 @@ function displayUnicorn(obj, index) {
   let labelPasture = document.createElement('label');
   labelPasture.textContent = 'Pasture';
   inputPasture.setAttribute('type', 'radio');
-  inputPasture.setAttribute('name', 'location');
+  inputPasture.setAttribute('name', index + 'location');
   inputPasture.setAttribute('id', index + 'pasture');
   inputPasture.setAttribute('class', index.toString());
   inputPasture.setAttribute('value', 'pasture');
@@ -54,7 +53,7 @@ function displayUnicorn(obj, index) {
   let labelTrail = document.createElement('label');
   labelTrail.textContent = 'Trail';
   inputTrail.setAttribute('type', 'radio');
-  inputTrail.setAttribute('name', 'location');
+  inputTrail.setAttribute('name', index + 'location');
   inputTrail.setAttribute('id', index + 'trail');
   inputTrail.setAttribute('class', index.toString());
   inputTrail.setAttribute('value', 'trail');
@@ -64,6 +63,7 @@ function displayUnicorn(obj, index) {
 
   el.appendChild(newEl);
 
+  checkRadioBox(index);
 }
 
 function checkRadioBox(index) {
@@ -84,8 +84,6 @@ function handleUpdateLocation(event) {
   herd[index].location = event.target.value;
   list.textContent = "";
   displayHerd(herd);
-  
-  checkRadioBox(index);
 }
 
 function checkLocalStorage() {
@@ -111,7 +109,6 @@ list.addEventListener('change', handleUpdateLocation)
 
 checkLocalStorage();
 displayHerd(herd);
-// console.log(document.getElementById('0trail'));
 
 
 
