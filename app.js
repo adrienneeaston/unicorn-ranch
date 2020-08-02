@@ -17,12 +17,12 @@ function displayUnicorn(obj, index) {
 
   for(let property in obj) {
     let description = document.createElement('h3');
-    description.textContent = property.toUpperCase() + ': ' + obj[property];
+    description.textContent = property + ': ' + obj[property];
     newEl.appendChild(description);
   };
 
   let update = document.createElement('h4');
-  update.textContent = 'Update Location';
+  update.textContent = 'UPDATE LOCATION:';
   newEl.appendChild(update);
 
   let inputBarn = document.createElement('input');
@@ -63,6 +63,10 @@ function displayUnicorn(obj, index) {
 
   el.appendChild(newEl);
 }
+
+// function checkRadioBox(index) {
+//   let target = herd[index].location;
+// }
 
 function displayHerd(arr) {
   for(let i = 0; i < arr.length; i++) {
