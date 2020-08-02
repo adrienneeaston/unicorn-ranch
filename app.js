@@ -33,6 +33,7 @@ function displayUnicorn(obj, index) {
   inputBarn.setAttribute('id', index + 'barn');
   inputBarn.setAttribute('class', index.toString());
   inputBarn.setAttribute('value', 'barn');
+  // inputBarn.setAttribute('checked', 'false');
   labelBarn.setAttribute('for', 'barn');
   newEl.appendChild(inputBarn);
   newEl.appendChild(labelBarn);
@@ -62,11 +63,13 @@ function displayUnicorn(obj, index) {
   newEl.appendChild(labelTrail);
 
   el.appendChild(newEl);
+
 }
 
-// function checkRadioBox(index) {
-//   let target = herd[index].location;
-// }
+function checkRadioBox(index) {
+  let inputID = document.getElementById(index + herd[index].location);
+  inputID.checked = true;
+}
 
 function displayHerd(arr) {
   for(let i = 0; i < arr.length; i++) {
@@ -81,6 +84,8 @@ function handleUpdateLocation(event) {
   herd[index].location = event.target.value;
   list.textContent = "";
   displayHerd(herd);
+  
+  checkRadioBox(index);
 }
 
 function checkLocalStorage() {
@@ -106,6 +111,8 @@ list.addEventListener('change', handleUpdateLocation)
 
 checkLocalStorage();
 displayHerd(herd);
+// console.log(document.getElementById('0trail'));
+
 
 
 
