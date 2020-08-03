@@ -19,6 +19,7 @@ li {
   justify-content: space-evenly;
   background: white;
   align-items: center;
+  border: 1px solid black;
 }
 
 h1 {
